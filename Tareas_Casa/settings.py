@@ -86,7 +86,9 @@ WSGI_APPLICATION = 'Tareas_Casa.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(os.getenv('DATABASE_URL', default='postgresql://postgres:postgres@localhost/postgres'))
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', 'postgresql://postgres:postgres@localhost/postgres')
+    )
 }
 
 
