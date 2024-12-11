@@ -16,6 +16,7 @@ python manage.py migrate
 python manage.py populate_tasks
 python manage.py populate_proyetcs
 python manage.py tailwind build
+python manage.py migrate django_celery_beat
+python manage.py runserver
 celery -A Tareas_Casa worker --loglevel=info
 celery -A Tareas_Casa beat --loglevel=info
-python manage.py migrate django_celery_beat
