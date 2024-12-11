@@ -4,7 +4,7 @@ set -o errexit
 
 pip install -r requirements.txt
 
-cd theme
+cd theme/static_src
 npm install
 npm run build
 cd ..
