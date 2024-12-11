@@ -87,9 +87,10 @@ WSGI_APPLICATION = 'Tareas_Casa.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'postgresql://postgres:postgres@localhost/postgres')
+        default='postgresql://base_de_datos_casa_user:j86RAEVzqqX6tSdJxO4JYR0jPTZrLtc6@dpg-ctcsdgtumphs73b7prpg-a/base_de_datos_casa'
     )
 }
+
 
 
 # Password validation
