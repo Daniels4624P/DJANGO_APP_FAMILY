@@ -12,6 +12,7 @@ python manage.py populate_proyetcs
 curl -fsSL https://fnm.vercel.app/install | bash
 source ~/.bashrc
 fnm use --install-if-missing 22
+npm install
 python manage.py tailwind build
 celery -A Tareas_Casa worker --loglevel=info
 celery -A Tareas_Casa beat --loglevel=info
