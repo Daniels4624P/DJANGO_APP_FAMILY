@@ -9,6 +9,8 @@ npm install
 npm run build
 cd ..
 cd ..
+which npm
+
 
 python manage.py collectstatic --noinput
 python manage.py makemigrations
