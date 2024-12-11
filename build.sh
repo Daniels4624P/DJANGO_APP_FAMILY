@@ -8,6 +8,7 @@ cd theme/static_src
 npm install
 npm run build
 cd ..
+cd ..
 
 python manage.py collectstatic --noinput
 python manage.py makemigrations
