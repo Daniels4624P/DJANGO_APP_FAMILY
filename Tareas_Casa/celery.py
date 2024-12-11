@@ -10,5 +10,7 @@ app = Celery('Tareas_Casa')
 # Configura Celery para usar las configuraciones de Django
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
+app.conf.broker_connection_retry_on_startup = True
+
 # Descubre automáticamente tareas en apps registradas
 app.autodiscover_tasks()
