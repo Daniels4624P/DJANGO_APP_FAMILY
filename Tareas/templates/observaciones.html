@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section style="padding: 20px;">
+    <h1 style="color: #826A5D; font-size: 2.5rem; text-align: center; margin-bottom: 20px;">Nueva Observación</h1>
+    <form method="post" style="max-width: 600px; margin: 0 auto; background-color: #F4EBD0; padding: 20px; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+        {% csrf_token %}
+        <div style="margin-bottom: 15px;">
+            <label for="observaciones" style="color: #3B3A36; font-size: 1.2rem; margin-bottom: 5px; display: block;">Ingresa tu observación:</label>
+            <textarea name="observaciones" id="observaciones" style="width: 100%; height: 100px; padding: 10px; border: 1px solid #D2C3B4; border-radius: 6px; font-size: 1rem; color: #3B3A36;"></textarea>
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" style="background-color: #826A5D; color: #F4EBD0; padding: 10px 20px; border: none; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#3B3A36';" onmouseout="this.style.backgroundColor='#826A5D';">
+                Guardar
+            </button>
+        </div>
+    </form>
+</section>
+{% endblock %}

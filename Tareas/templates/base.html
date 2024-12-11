@@ -1,0 +1,92 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Family</title>
+    {% tailwind_css %}
+    <style>
+        body {
+            background-color: #F4EBD0; /* Creamy beige */
+            color: #3B3A36; /* Warm charcoal */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #826A5D; /* Muted brown */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: #F4EBD0;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #D2C3B4; /* Light taupe */
+        }
+        .points {
+            background-color: #D2C3B4;
+            color: #3B3A36;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="{% url 'Home' %}" style="color: #F4EBD0; font-size: 1.5rem; font-weight: bold; text-decoration: none;">App Family</a>
+        </div>
+        <ul>
+            <li>
+                <a href="{% url 'Home' %}">Home</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="{% url 'Tareas' %}">Tareas</a>
+            </li>
+            <li>
+                <a href="{% url 'Logout' %}">Logout</a>
+            </li>
+            <li>
+                <a href="{% url 'Proyectos' %}">Proyectos</a>
+            </li>
+            <li>
+                <a href="{% url 'Posiciones' %}">Tabla De Posiciones</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'Login' %}">Login</a>
+            </li>
+            <li>
+                <a href="{% url 'Register' %}">Register</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    <p class="points">Puntos: {{ user.profile.puntos }}</p>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

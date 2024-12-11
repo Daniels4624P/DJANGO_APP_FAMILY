@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section style="padding: 20px;">
+    <h1 style="color: #826A5D; font-size: 2.5rem; text-align: center; margin-bottom: 20px;">Añadir Proyecto</h1>
+    <form method="post" style="max-width: 600px; margin: 0 auto; background: linear-gradient(135deg, #F4EBD0, #D2C3B4); padding: 25px; border-radius: 12px; box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);">
+        {% csrf_token %}
+        <div style="margin-bottom: 20px;">
+            <label for="proyecto" style="color: #3B3A36; font-size: 1.2rem; margin-bottom: 8px; display: block;">Proyecto:</label>
+            <input type="text" id="proyecto" name="proyecto" placeholder="Ingrese su nuevo proyecto" style="width: 100%; padding: 12px; border: 2px solid #D2C3B4; border-radius: 8px; font-size: 1rem; color: #3B3A36; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#826A5D';" onblur="this.style.borderColor='#D2C3B4';">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <label for="descripcion" style="color: #3B3A36; font-size: 1.2rem; margin-bottom: 8px; display: block;">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" placeholder="Ingrese la descripción de su proyecto" style="width: 100%; padding: 12px; border: 2px solid #D2C3B4; border-radius: 8px; font-size: 1rem; color: #3B3A36; transition: border-color 0.3s ease;" onfocus="this.style.borderColor='#826A5D';" onblur="this.style.borderColor='#D2C3B4';">
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" style="background: linear-gradient(135deg, #826A5D, #3B3A36); color: #F4EBD0; padding: 12px 25px; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0px 8px 15px rgba(0, 0, 0, 0.3)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0px 6px 10px rgba(0, 0, 0, 0.2)';">
+                Guardar Proyecto
+            </button>
+        </div>
+    </form>
+    {% if hecho or error %}
+    <p style="color: {% if error %}red{% else %}green{% endif %}; text-align: center; margin-top: 15px; font-size: 1.1rem;">{{ hecho }}{{ error }}</p>
+    {% endif %}
+</section>
+{% endblock %}

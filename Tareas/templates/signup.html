@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<section style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+    <div style="background-color: #D2C3B4; width: 100%; max-width: 400px; padding: 30px; border-radius: 12px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+        <h1 style="color: #826A5D; text-align: center; font-size: 2rem; margin-bottom: 20px;">Register</h1>
+        <form method="post" style="display: flex; flex-direction: column; gap: 15px;">
+            {% csrf_token %}
+            <div style="display: flex; flex-direction: column;">
+                <label for="username" style="color: #3B3A36; font-weight: bold;">Usuario</label>
+                <input type="text" name="username" id="username" placeholder="Escribe tu usuario" style="padding: 10px; border: 1px solid #826A5D; border-radius: 8px; font-size: 1rem; transition: box-shadow 0.3s, background-color 0.3s;" onfocus="this.style.boxShadow='0px 0px 8px #826A5D'; this.style.backgroundColor='#F4EBD0';" onblur="this.style.boxShadow='none'; this.style.backgroundColor='white';">
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <label for="password1" style="color: #3B3A36; font-weight: bold;">Contraseña</label>
+                <input type="password" name="password1" id="password1" placeholder="Escribe tu contraseña" style="padding: 10px; border: 1px solid #826A5D; border-radius: 8px; font-size: 1rem; transition: box-shadow 0.3s, background-color 0.3s;" onfocus="this.style.boxShadow='0px 0px 8px #826A5D'; this.style.backgroundColor='#F4EBD0';" onblur="this.style.boxShadow='none'; this.style.backgroundColor='white';">
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <label for="password2" style="color: #3B3A36; font-weight: bold;">Confirma Contraseña</label>
+                <input type="password" name="password2" id="password2" placeholder="Escribe tu contraseña de nuevo" style="padding: 10px; border: 1px solid #826A5D; border-radius: 8px; font-size: 1rem; transition: box-shadow 0.3s, background-color 0.3s;" onfocus="this.style.boxShadow='0px 0px 8px #826A5D'; this.style.backgroundColor='#F4EBD0';" onblur="this.style.boxShadow='none'; this.style.backgroundColor='white';">
+            </div>
+            <button type="submit" style="background-color: #826A5D; color: #F4EBD0; padding: 10px; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s, transform 0.3s;" onmouseover="this.style.backgroundColor='#3B3A36'; this.style.transform='scale(1.05)';" onmouseout="this.style.backgroundColor='#826A5D'; this.style.transform='scale(1)';">
+                Guardar
+            </button>
+            <p style="color: red; text-align: center;">{{ error }}</p>
+        </form>
+    </div>
+</section>
+{% endblock %}
