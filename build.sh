@@ -9,8 +9,6 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py populate_tasks
 python manage.py populate_proyetcs
-apt update
-apt install nodejs npm
 python manage.py tailwind build
 celery -A Tareas_Casa worker --loglevel=info
 celery -A Tareas_Casa beat --loglevel=info
