@@ -21,12 +21,14 @@ django-browser-reload==1.17.0
 django-celery-beat==2.7.0
 django-tailwind==3.8.0
 django-timezone-field==7.0
+gunicorn==23.0.0
 idna==3.10
 Jinja2==3.1.4
 kombu==5.4.2
 markdown-it-py==3.0.0
 MarkupSafe==3.0.2
 mdurl==0.1.2
+packaging==24.2
 prompt_toolkit==3.0.48
 psycopg==3.2.3
 psycopg2==2.9.10
