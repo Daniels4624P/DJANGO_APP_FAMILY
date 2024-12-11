@@ -9,10 +9,8 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py populate_tasks
 python manage.py populate_proyetcs
-curl -fsSL https://fnm.vercel.app/install | bash
-source ~/.bashrc
-fnm use --install-if-missing 22
-npm install
+sudo apt update
+sudo apt install nodejs npm
 python manage.py tailwind build
 celery -A Tareas_Casa worker --loglevel=info
 celery -A Tareas_Casa beat --loglevel=info
