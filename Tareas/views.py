@@ -80,14 +80,6 @@ def UpPoints(request, task_id):
 def DecrementPoints(request, task_id):
     try:
         tarea = Tasks.objects.get(id=task_id)
-
-        user_task = UserTask.objects.get(
-            task=tarea,
-            user=request.user
-        )
-
-        if not user_task.completed:
-            return redirect('Tareas')
         
         profile, created = Profile.objects.get_or_create(user=request.user)
 
@@ -95,7 +87,7 @@ def DecrementPoints(request, task_id):
         profile.save()
 
         return redirect('Tareas')
-    except Tasks.DoesNotExist:
+    except UserTask.DoesNotExist:
         return redirect('Tareas')
     
 @login_required
