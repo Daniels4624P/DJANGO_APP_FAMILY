@@ -90,6 +90,9 @@ def UpPointsAreas(request, task_id):
             defaults={'completed': False}
         )
 
+        if int(request.POST['areas'] > 5):
+            return render(request, 'sumar_puntos_areas.html', {'error': 'No hay mas de 5 habitaciones para limpiar en la casa'})
+
         if user_task.completed:
             return redirect('Tareas')
 
