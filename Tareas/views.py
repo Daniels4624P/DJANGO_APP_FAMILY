@@ -76,6 +76,35 @@ def UpPoints(request, task_id):
     except Tasks.DoesNotExist:
         return redirect('Tareas')
 
+@login_required
+def UpPointsAreas(request, task_id):
+    if request.method == 'GET':
+        return render(request, 'sumar_puntos_areas.html')
+    try:
+        tarea = Tasks.objects.get(id=task_id)
+
+        # Crear o actualizar la relación entre usuario y tarea
+        user_task, created = UserTask.objects.get_or_create(
+            task=tarea,
+            user=request.user,
+            defaults={'completed': False}
+        )
+
+        if user_task.completed:
+            return redirect('Tareas')
+
+        profile, created = Profile.objects.get_or_create(user=request.user)
+
+        user_task.completed = True
+        user_task.save()
+
+        profile.puntos += tarea.puntaje * int(request.POST['areas'])
+        profile.save()
+
+        return redirect('Tareas')
+    except:
+        return render(request, 'sumar_puntos_areas.html', {'error': 'Fallo en la suma de puntos'})
+
 @login_required 
 def DecrementPoints(request, task_id):
     try:
