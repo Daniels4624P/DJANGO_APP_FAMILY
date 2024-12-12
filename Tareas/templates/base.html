@@ -16,20 +16,27 @@
         }
         nav {
             background-color: #826A5D; /* Muted brown */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            position: relative;
         }
-        nav ul {
+        .nav-logo {
+            color: #F4EBD0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .nav-menu {
             list-style-type: none;
             margin: 0;
             padding: 0;
             display: flex;
             gap: 20px;
         }
-        nav ul li a {
+        .nav-menu li a {
             color: #F4EBD0;
             text-decoration: none;
             font-weight: bold;
@@ -37,8 +44,36 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
-        nav ul li a:hover {
+        .nav-menu li a:hover {
             background-color: #D2C3B4; /* Light taupe */
+        }
+        .menu-toggle {
+            display: none;
+            background-color: #826A5D;
+            color: #F4EBD0;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #826A5D;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
         }
         .points {
             background-color: #D2C3B4;
@@ -55,10 +90,9 @@
 </head>
 <body>
     <nav>
-        <div>
-            <a href="{% url 'Home' %}" style="color: #F4EBD0; font-size: 1.5rem; font-weight: bold; text-decoration: none;">App Family</a>
-        </div>
-        <ul>
+        <a href="{% url 'Home' %}" class="nav-logo">App Family</a>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <ul class="nav-menu">
             <li>
                 <a href="{% url 'Home' %}">Home</a>
             </li>
@@ -88,5 +122,11 @@
     <p class="points">Puntos: {{ user.profile.puntos }}</p>
     {% block content %}
     {% endblock %}
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
