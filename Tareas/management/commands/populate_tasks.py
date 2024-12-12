@@ -18,7 +18,15 @@ class Command(BaseCommand):
             {"descripcion": "Organizar Nevera", "puntos": 20},
             {"descripcion": "Sacar Basura", "puntos": 20},
             {"descripcion": "Planear y Hacer Mercado", "puntos": 35},
-            {"descripcion": "Llevar Botellas de Amor y Sacar Reciclaje", "puntos": 15}
+            {"descripcion": "Llevar Botellas de Amor y Sacar Reciclaje", "puntos": 15},
+            {"descripcion": "Presupuesto y contabilidad", "puntos": 10},
+            {"descripcion": "Recreacion en familia", "puntos": 15},
+            {"descripcion": "Ejercicio", "puntos": 10},
+            {"descripcion": "Hacer almuerzo y comida", "puntos": 35},
+            {"descripcion": "Preparar Ingredientes para las comidas", "puntos": 30},
+            {"descripcion": "Lavar ropa interior", "puntos": 5},
+            {"descripcion": "Hacer rosario en familia", "puntos": 25},
+            {"descripcion": "Hacer desayuno", "puntos": 20}
         ]
 
         for tarea in tareas_y_puntajes:
