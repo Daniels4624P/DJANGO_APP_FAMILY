@@ -38,4 +38,5 @@ urlpatterns = [
     path('editar_observacion/<int:task_id>', Editar_Observacion, name='EditarObservacion'),
     path('subir_puntos_areas/<int:task_id>', UpPointsAreas, name='UpPointsAreas'),
     path("__reload__/", include("django_browser_reload.urls")),
+    path("Tareas_Persona/", Tabla_Tareas_Persona, name='TareasPorPersona'),
 ]
