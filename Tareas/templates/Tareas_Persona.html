@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section style="padding: 20px;">
+    <h1 style="color: #826A5D; font-size: 2.5rem; text-align: center; margin-bottom: 20px;">Lista de Tareas</h1>
+    <table style="width: 80%; margin: 0 auto; border-collapse: collapse; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); background-color: #F4EBD0; border-radius: 8px; overflow: hidden;">
+        <thead style="background-color: #826A5D; color: #F4EBD0;">
+            <tr>
+                <th style="padding: 10px; text-align: left; font-size: 1.2rem;">Usuario</th>
+                <th style="padding: 10px; text-align: left; font-size: 1.2rem;">Título</th>
+                <th style="padding: 10px; text-align: left; font-size: 1.2rem;">Fecha de Completado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in tareas %}
+                {% for tarea in usuario.tareas_ordenadas %}
+                <tr style="border-bottom: 1px solid #D2C3B4;">
+                    {% if forloop.first %}
+                    <td style="padding: 10px; font-size: 1rem; color: #3B3A36;" rowspan="{{ usuario.tareas_ordenadas|length }}">{{ usuario.username }}</td>
+                    {% endif %}
+                    <td style="padding: 10px; font-size: 1rem; color: #3B3A36;">{{ tarea.task.nombre }}</td>
+                    <td style="padding: 10px; font-size: 1rem; color: #3B3A36;">{{ tarea.completed_at }}</td>
+                </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
