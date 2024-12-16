@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from datetime import datetime
+from django.db.models import Prefetch
 
 def Home(request):
     return render(request, 'home.html')
@@ -112,7 +113,7 @@ def UpPointsAreas(request, task_id):
 def DecrementPoints(request, task_id):
     try:
         tarea = Tasks.objects.get(id=task_id)
-        
+
         profile, created = Profile.objects.get_or_create(user=request.user)
 
         profile.puntos -= tarea.puntaje
@@ -198,3 +199,14 @@ def tabla_posiciones(request):
     usuarios_completos = User.objects.all()
     puntajes = Profile.objects.all().order_by('-puntos')
     return render(request, 'tabla_posiciones.html', {'usuarios': usuarios_completos, 'puntajes': puntajes})
+
+@login_required
+def Tabla_Tareas_Persona(request):
+    Tareas_Hechas = User.objects.prefetch_related(
+        Prefetch(
+        'tasks',
+        queryset=UserTask.objects.order_by('-completed_at'),
+        to_attr='tareas_ordenadas'
+        )
+    )
+    return render(request, 'Tareas_Persona.html', {'tareas': Tareas_Hechas})
