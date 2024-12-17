@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Tareas.views import SignUp, Tareas, SignIn, Home, Logout, UpPoints, DecrementPoints, Anadir_Tarea, Proyectos_Function, Eliminar_Tarea, tabla_posiciones, Anadir_Proyecto, Completar_Proyectos, Descompletar_Proyectos, Crear_Observacion, Editar_Observacion, UpPointsAreas
+from Tareas.views import SignUp, Tareas, SignIn, Home, Logout, UpPoints, DecrementPoints, Anadir_Tarea, Proyectos_Function, Eliminar_Tarea, tabla_posiciones, Anadir_Proyecto, Completar_Proyectos, Descompletar_Proyectos, Crear_Observacion, Editar_Observacion, UpPointsAreas, Tabla_Tareas_Persona
 
 urlpatterns = [
     path('admin/', admin.site.urls),
