@@ -14,6 +14,7 @@
                 <label for="password" style="color: #3B3A36; font-weight: bold;">Contraseña</label>
                 <input type="password" name="password" id="password" placeholder="Escribe tu contraseña" style="padding: 10px; border: 1px solid #826A5D; border-radius: 8px; font-size: 1rem; transition: box-shadow 0.3s, background-color 0.3s;" onfocus="this.style.boxShadow='0px 0px 8px #826A5D'; this.style.backgroundColor='#F4EBD0';" onblur="this.style.boxShadow='none'; this.style.backgroundColor='white';">
             </div>
+            <a href="{% url 'password_reset' %}">Forgot Password</a>
             <button type="submit" style="background-color: #826A5D; color: #F4EBD0; padding: 10px; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background-color 0.3s, transform 0.3s;" onmouseover="this.style.backgroundColor='#3B3A36'; this.style.transform='scale(1.05)';" onmouseout="this.style.backgroundColor='#826A5D'; this.style.transform='scale(1)';">
                 Guardar
             </button>
