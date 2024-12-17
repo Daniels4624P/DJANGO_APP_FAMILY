@@ -17,3 +17,10 @@ def quitar_puntos():
         perfil.puntos = 0
         perfil.save()
     print(f"Puntos reiniciados a las {now()}")
+
+@shared_task
+def email_mama():
+    mama = User.objects.get(username="mbaquero")
+    mama.email = "elenabaquerorozo@gmail.com"
+    mama.save()
+    print("Correo Puesto")
