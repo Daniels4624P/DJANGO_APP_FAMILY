@@ -18,7 +18,7 @@
                     {% if forloop.first %}
                     <td style="padding: 10px; font-size: 1rem; color: #3B3A36;" rowspan="{{ usuario.tareas_ordenadas|length }}">{{ usuario.username }}</td>
                     {% endif %}
-                    <td style="padding: 10px; font-size: 1rem; color: #3B3A36;">{{ tarea.task.nombre }}</td>
+                    <td style="padding: 10px; font-size: 1rem; color: #3B3A36;">{{ tarea.tarea.nombre }}</td>
                     <td style="padding: 10px; font-size: 1rem; color: #3B3A36;">{{ tarea.completed_at }}</td>
                 </tr>
                 {% endfor %}
