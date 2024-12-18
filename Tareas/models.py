@@ -23,7 +23,7 @@ class UserTask(models.Model):
     completed_at = models.DateTimeField(blank=True, null=True, auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.task.nombre} - {self.completed_at.strftime("%d-%m-%Y")}"
+        return f"{self.user.username} - {self.task.nombre} - {self.completed_at.strftime('%d-%m-%Y')}"
 
 class Proyectos(models.Model):
     proyecto = models.CharField(max_length=100)
