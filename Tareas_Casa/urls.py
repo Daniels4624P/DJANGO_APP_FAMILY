@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Tareas.views import SignUp, Tareas, SignIn, Home, Logout, UpPoints, DecrementPoints, Anadir_Tarea, Proyectos_Function, Eliminar_Tarea, tabla_posiciones, Anadir_Proyecto, Completar_Proyectos, Descompletar_Proyectos, Crear_Observacion, Editar_Observacion, UpPointsAreas, Tabla_Tareas_Persona
+from Tareas.views import SignUp, Tareas, SignIn, Home, Logout, UpPoints, DecrementPoints, Anadir_Tarea, Proyectos_Function, Eliminar_Tarea, tabla_posiciones, Anadir_Proyecto, Completar_Proyectos, Descompletar_Proyectos, Crear_Observacion, Editar_Observacion, UpPointsAreas, Tabla_Tareas_Persona, UpPointsBanos
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -38,6 +38,7 @@ urlpatterns = [
     path('crear_observacion/<int:task_id>', Crear_Observacion, name='CrearObservacion'),
     path('editar_observacion/<int:task_id>', Editar_Observacion, name='EditarObservacion'),
     path('subir_puntos_areas/<int:task_id>', UpPointsAreas, name='UpPointsAreas'),
+    path('subir_puntos_banos/<int:task_id>', UpPointsBanos, name='UpPointsBanos'),
     path("__reload__/", include("django_browser_reload.urls")),
     path("Tareas_Persona/", Tabla_Tareas_Persona, name='TareasPorPersona'),
     path("password_reset/", auth_views.PasswordResetView.as_view(template_name="password_reset.html"), name='password_reset'),
