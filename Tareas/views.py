@@ -117,10 +117,56 @@ def UpPointsAreas(request, task_id):
         profile.puntos += tarea.puntaje * int(request.POST['areas'])
         profile.save()
 
+        for num in range(1, int(request.POST['areas']) + 1):
+            TaskHistory.objects.create(
+                user=request.user,
+                tarea=tarea
+            )
+
         return redirect('Tareas')
     except:
         return render(request, 'sumar_puntos_areas.html', {'error': 'Fallo en la suma de puntos'})
 
+@login_required
+def UpPointsBanos(request, task_id):
+    if request.method == 'GET':
+        return render(request, 'sumar_puntos_areas.html')
+    try:
+        tarea = Tasks.objects.get(id=task_id)
+
+        user_task = UserTask.objects.filter(task=tarea, user=request.user).first()
+
+        # Si no se encuentra una relación entre el usuario y la tarea, creamos una nueva
+        if not user_task:
+            user_task = UserTask.objects.create(
+                task=tarea,
+                user=request.user,
+                completed=False
+            )
+
+        if int(request.POST['areas']) > 2:
+            return render(request, 'sumar_puntos_areas.html', {'error': 'No hay mas de 2 banos para limpiar en la casa'})
+
+        if user_task.completed:
+            return redirect('Tareas')
+
+        profile, created = Profile.objects.get_or_create(user=request.user)
+
+        user_task.completed = True
+        user_task.save()
+
+        profile.puntos += tarea.puntaje * int(request.POST['areas'])
+        profile.save()
+
+        for num in range(1, int(request.POST['areas']) + 1):
+            TaskHistory.objects.create(
+                user=request.user,
+                tarea=tarea
+            )
+
+        return redirect('Tareas')
+    except:
+        return render(request, 'sumar_puntos_areas.html', {'error': 'Fallo en la suma de puntos'})
 
 @login_required 
 def DecrementPoints(request, task_id):
