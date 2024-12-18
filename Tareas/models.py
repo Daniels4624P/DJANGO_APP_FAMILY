@@ -40,4 +40,4 @@ class TaskHistory(models.Model):
     completed_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.tarea.nombre} - {self.completed_at.strftime("%d-%m-%Y")}"
+        return f"{self.user.username} - {self.tarea.nombre} - {self.completed_at.strftime('%d-%m-%Y')}"
