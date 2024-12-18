@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from .models import Tasks, UserTask, Profile, Proyectos
+from .models import Tasks, UserTask, Profile, Proyectos, TaskHistory
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from django.db import IntegrityError
+from django.db import IntegrityError, transaction
 from datetime import datetime
 from django.db.models import Prefetch
 
@@ -55,12 +55,15 @@ def UpPoints(request, task_id):
     try:
         tarea = Tasks.objects.get(id=task_id)
 
-        # Crear o actualizar la relación entre usuario y tarea
-        user_task, created = UserTask.objects.get_or_create(
-            task=tarea,
-            user=request.user,
-            defaults={'completed': False}
-        )
+        user_task = UserTask.objects.filter(task=tarea, user=request.user).first()
+
+        # Si no se encuentra una relación entre el usuario y la tarea, creamos una nueva
+        if not user_task:
+            user_task = UserTask.objects.create(
+                task=tarea,
+                user=request.user,
+                completed=False
+            )
 
         if user_task.completed:
             return redirect('Tareas')
@@ -73,6 +76,12 @@ def UpPoints(request, task_id):
         profile.puntos += tarea.puntaje
         profile.save()
 
+        # Crear un registro en la tabla de historial de tareas completadas
+        TaskHistory.objects.create(
+            user=request.user,
+            tarea=tarea
+        )
+
         return redirect('Tareas')
     except Tasks.DoesNotExist:
         return redirect('Tareas')
@@ -84,12 +93,15 @@ def UpPointsAreas(request, task_id):
     try:
         tarea = Tasks.objects.get(id=task_id)
 
-        # Crear o actualizar la relación entre usuario y tarea
-        user_task, created = UserTask.objects.get_or_create(
-            task=tarea,
-            user=request.user,
-            defaults={'completed': False}
-        )
+        user_task = UserTask.objects.filter(task=tarea, user=request.user).first()
+
+        # Si no se encuentra una relación entre el usuario y la tarea, creamos una nueva
+        if not user_task:
+            user_task = UserTask.objects.create(
+                task=tarea,
+                user=request.user,
+                completed=False
+            )
 
         if int(request.POST['areas']) > 5:
             return render(request, 'sumar_puntos_areas.html', {'error': 'No hay mas de 5 habitaciones para limpiar en la casa'})
@@ -108,6 +120,7 @@ def UpPointsAreas(request, task_id):
         return redirect('Tareas')
     except:
         return render(request, 'sumar_puntos_areas.html', {'error': 'Fallo en la suma de puntos'})
+
 
 @login_required 
 def DecrementPoints(request, task_id):
@@ -205,7 +218,7 @@ def Tabla_Tareas_Persona(request):
     Tareas_Hechas = User.objects.prefetch_related(
         Prefetch(
         'tasks',
-        queryset=UserTask.objects.order_by('-completed_at'),
+        queryset=TaskHistory.objects.order_by('-completed_at'),
         to_attr='tareas_ordenadas'
         )
     )
