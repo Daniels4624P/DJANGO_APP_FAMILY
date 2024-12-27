@@ -33,3 +33,5 @@ if not User.objects.filter(username=username).exists():
 else:
     print(f"Superusuario ya existe: {username}")
 EOF
+gnome-terminal -- bash -c "celery -A mi_proyecto worker --loglevel=info; exec bash"
+gnome-terminal -- bash -c "celery -A mi_proyecto beat --loglevel=info; exec bash"
