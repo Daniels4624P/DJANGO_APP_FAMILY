@@ -156,7 +156,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-NPM_BIN_PATH = "/home/render/envwrappers/npm"
+NPM_BIN_PATH = "/usr/local/bin/npm"# /home/render/envwrappers/npm
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
