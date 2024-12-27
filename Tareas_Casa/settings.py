@@ -146,7 +146,7 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_BEAT_SCHEDULE = {
     'mi-tarea-periodica': {
         'task': 'Tareas.tasks.descompletar_tareas',
-        'schedule': crontab(hour=18, minute=2),  # Cada 30 segundos
+        'schedule': crontab(hour=22, minute=0),  # Cada 30 segundos
     },
 }
 
