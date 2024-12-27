@@ -1,13 +1,18 @@
 services:
   - type: web
-    name: django-web
+    name: mi-app
     env: python
-    buildCommand: "pip install -r requirements.txt && python manage.py tailwind build && python manage.py populate_tasks && python manage.py populate_proyects"
-    startCommand: "gunicorn Tareas_Casa.wsgi:Tareas --preload --bind 0.0.0.0:$PORT"
-    envVars:
-      - key: DATABASE_URL
-        value: postgresql://base_de_datos_casa_user:j86RAEVzqqX6tSdJxO4JYR0jPTZrLtc6@dpg-ctcsdgtumphs73b7prpg-a/base_de_datos_casa
-      - key: REDIS_URL
-        value: redis://red-ctcs75popnds73ann7r0:6379
-      - key: DJANGO_SETTINGS_MODULE
-        value: Tareas_Casa.settings
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn Tareas_Casa.wsgi:Tareas --preload"
+    
+  - type: worker
+    name: celery-worker
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "celery -A mi_proyecto worker --loglevel=info"
+
+  - type: worker
+    name: celery-beat
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "celery -A mi_proyecto beat --loglevel=info"
