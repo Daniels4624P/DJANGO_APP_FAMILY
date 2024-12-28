@@ -138,8 +138,8 @@ LOGIN_URL = '/signin'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CELERY_BROKER_URL = os.environ.get("REDIS_URL", default="dsadasdasdsa")
-CELERY_RESULT_BACKEND = os.environ.get("REDIS_URL", default="dasdsadasdasdasd")
+CELERY_BROKER_URL = os.environ.get("REDIS_URL", default="rediss://red-ctcs75popnds73ann7r0:IcISzSQEUyncZAQ2GyuUJyPHodSfJj1q@oregon-redis.render.com:6379")
+CELERY_RESULT_BACKEND = os.environ.get("REDIS_URL", default="rediss://red-ctcs75popnds73ann7r0:IcISzSQEUyncZAQ2GyuUJyPHodSfJj1q@oregon-redis.render.com:6379")
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 
