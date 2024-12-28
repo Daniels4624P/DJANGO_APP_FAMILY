@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='dasdiashdkjashdjkshad')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['web-production-870e.up.railway.app']
+ALLOWED_HOSTS = []
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
