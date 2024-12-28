@@ -10,8 +10,8 @@ npm run build
 cd ..
 cd ..
 
-RUN useradd -ms /bin/bash admin123
-RUN chown -R admin123 /Tareas
+echo "Creando usuario admin123..."
+useradd -ms /bin/bash admin123
 python manage.py collectstatic --noinput
 python manage.py makemigrations
 python manage.py migrate
