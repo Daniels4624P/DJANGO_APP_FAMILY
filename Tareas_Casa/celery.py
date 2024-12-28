@@ -7,6 +7,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Tareas_Casa.settings')
 
 app = Celery('Tareas_Casa')
 app.conf.update(
+    broker_connection_retry_on_startup=True,
     broker_connection_timeout=30,  # Tiempo de espera en segundos
 )
 # Configura Celery para usar las configuraciones de Django
