@@ -36,5 +36,4 @@ else:
     print(f"Superusuario ya existe: {username}")
 EOF
 echo "Iniciando Celery Worker y Beat..."
-celery -A mi_proyecto worker --loglevel=info &
-celery -A mi_proyecto beat --loglevel=info &
+exec su - admin123 -c "honcho start"
