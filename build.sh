@@ -10,8 +10,6 @@ npm run build
 cd ..
 cd ..
 
-echo "Creando usuario admin123..."
-useradd -ms /bin/bash admin123
 python manage.py collectstatic --noinput
 python manage.py makemigrations
 python manage.py migrate
@@ -36,4 +34,3 @@ else:
     print(f"Superusuario ya existe: {username}")
 EOF
 echo "Iniciando Celery Worker y Beat..."
-exec su - admin123 -c "honcho start"
