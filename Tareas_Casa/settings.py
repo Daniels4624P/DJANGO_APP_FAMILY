@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'Tareas_Casa.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://base_de_datos_casa_iv5e_user:hwpYjA15rtQc36bQ8gKoPKESKCqbEJ4Y@dpg-cu1d02d2ng1s73eapllg-a/base_de_datos_casa_iv5e'
+        default='postgresql://base_de_datos_casa_b1ln_user:5avo2bNd16kjKfEfdnJkFi5l86dKK0DJ@dpg-cu1dvnrtq21c73bhlpr0-a.virginia-postgres.render.com/base_de_datos_casa_b1ln'
     )
 }
 
