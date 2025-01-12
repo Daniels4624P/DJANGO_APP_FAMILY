@@ -9,7 +9,7 @@ class Command(BaseCommand):
             {"descripcion": "Organizar Cocina", "puntos": 20},
             {"descripcion": "Lavar un baño", "puntos": 30},
             {"descripcion": "Organizar Lavandería", "puntos": 25},
-            {"descripcion": "Tender Cama", "puntos": 5},
+            {"descripcion": "Tender Cama (antes de las 12:00PM)", "puntos": 5},
             {"descripcion": "Organizar Comedor", "puntos": 10},
             {"descripcion": "Organizar Area", "puntos": 15},
             {"descripcion": "Barrer y Trapear Area", "puntos": 20},
@@ -26,7 +26,13 @@ class Command(BaseCommand):
             {"descripcion": "Preparar Ingredientes para las comidas", "puntos": 30},
             {"descripcion": "Lavar ropa interior", "puntos": 5},
             {"descripcion": "Hacer rosario en familia", "puntos": 25},
-            {"descripcion": "Hacer desayuno", "puntos": 20}
+            {"descripcion": "Hacer desayuno", "puntos": 20},
+            {"descripcion": "Lavar losa (mientras hacen el almuerzo)", "puntos": 20},
+            {"descripcion": "Asistir a citas medicas", "puntos": 20},
+            {"descripcion": "Barrer (comedor y pasillo)", "puntos": 20},
+            {"descripcion": "Sacar citas medicas", "puntos": 15},
+            {"descripcion": "Lavar losa (Noche)", "puntos": 10},
+            {"descripcion": "Lavar losa (Dia)", "puntos": 10},
         ]
 
         for tarea in tareas_y_puntajes:
